@@ -1,0 +1,14 @@
+body {
+    background-color: #ffffff;
+}
+
+h1 {
+    color: blue;
+}
+
+p {
+    font-family: JetBrains Nerds Mono, monospace;
+    font-size: 16px;
+    color: #00ffdd;
+    font-weight: bold;
+}
