@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub Hluško</title>
 </head>
-<body>
+<body class="dark-mode">
     <header>
     <nav>
         <div class="logo">J</div>
@@ -15,8 +15,11 @@
             <li><a href="#o-mne">O mně</a></li>
             <li><a href="#projekty">Projekty</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
+            <li><button id="theme-toggle">Přepnout režim</button></li>
+
         </ul>
     </nav>
+    <script src="script.js"></script>
     </header>
     <main>
         <section id="domu">
@@ -25,8 +28,32 @@
         </section>
         <section id="o-mne">
             <h2>O mně</h2>
-            <!-- Tady později doplníš víc info -->
+            <div class="karty-container">
+                <div class="karta">
+                    <h3>Studium</h3>
+                    <p>Bakalářský program Průmyslového managementu, Maturita z IT Elektrotechniky</p>
+                </div>
+                <div class="karta">
+                    <h3>Dovednosti</h3>
+                    <p>Angličtina B2, Python, HTML, CSS. Git, LoRa, ESP32</p>
+                </div>
+            </div>
         </section>
+        <section id="projekty">
+    <h2>Projekty</h2>
+    <div class="karty-container">
+        <div class="karta">
+            <h3>Web Portfolio</h3>
+            <p>Web postavený čistě na HTML, CSS a JS.</p>
+            <a href="#">Zobrazit kód</a>
+        </div>
+        <div class="karta">
+            <h3>Další projekt</h3>
+            <p>Tady bude něco dalšího, co brzy naprogramuji!</p>
+            <a href="#">Zobrazit kód</a>
+        </div>
+    </div>
+</section>
     </main>
     <footer>
         <p>&copy; 2026 Jakub Hluško | <a href="https://github.com/Luckeris">GitHub</a></p>

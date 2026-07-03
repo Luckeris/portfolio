@@ -1,55 +1,86 @@
+:root {
+    /* Světlý režim - jemné kontrasty */
+    --bg-color: #ffffff;           /* Čistě bílá pro hlavní pozadí */
+    --text-color: #2d3436;         /* Téměř černá pro lepší čitelnost */
+    --accent-color: #6f00ff;       /* Tvoje fialová */
+    
+    --nav-bg: #ffffff;             /* Bílá navigace */
+    --nav-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Jemný stín pod menu */
+    
+    --card-bg: #f8f9fa;           /* Velmi světle šedá pro karty */
+    --card-border: #e9ecef;        /* Jemný rámeček */
+    --footer-bg: #f8f9fa;         /* Světle šedá patička */
+}
+
+body.dark-mode {
+    /* Tmavý režim */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #3d0083;
+    --nav-bg: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --card-border: #333;
+}
+
 body {
-    background-color: #ffffff;
-    font-family: JetBrains Mono, monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    letter-spacing: -0.2px;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333;
-    min-height: 100vh; /* Zajišťuje, že tělo stránky zabírá alespoň výšku okna */
-
+    min-height: 100vh;
 }
+
 h1 {
     margin-left: 5%;
     margin-right: 5%;
 }
 
-p{
-        margin-left: 5%;
-        margin-right: 5%;
+p {
+    margin-left: 5%;
+    margin-right: 5%;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background-color: #f9f9f9;
+    background-color: var(--nav-bg);
+    box-shadow: var(--nav-shadow); /* Tady se projeví ten stín */
+    position: sticky;              /* Menu zůstane nahoře při skrolování */
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 20px; /* Mezery mezi odkazy */
+    gap: 20px;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: 600;
 }
 
-/* Efekt při najetí myší */
 nav a:hover {
-    color: #007bff;
+    color: var(--accent-color);
 }
 
 .logo {
-    font-size: 24px;         /* Velikost písmene */
-    font-weight: 900;        /* Velmi tučné */
-    color: #ffffff;          /* Bílá barva textu */
-    background-color: #6f00ff;  /* Tmavé pozadí */
-    padding: 5px 15px;       /* Aby kolem J bylo trochu místa */
-    border-radius: 5px;      /* Jemně zakulacené rohy – vypadá to moderně */
-    cursor: pointer;         /* Při najetí se změní kurzor na ruku */
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+    background-color: var(--accent-color);
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 section {
@@ -57,7 +88,7 @@ section {
 }
 
 #domu {
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     min-height: 40vh;
     display: flex;
     flex-direction: column;
@@ -71,7 +102,44 @@ main p {
 footer {
     text-align: center;
     padding: 40px;
-    background-color: #f9f9f9;
+    background-color: var(--nav-bg);
     font-size: 0.9em;
     color: #666;
+}
+
+.karty-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.karta {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 250px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid var(--card-border);
+}
+
+.karta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#theme-toggle {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
 }
