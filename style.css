@@ -1,14 +1,77 @@
 body {
     background-color: #ffffff;
-}
+    font-family: JetBrains Mono, monospace;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh; /* Zajišťuje, že tělo stránky zabírá alespoň výšku okna */
 
+}
 h1 {
-    color: blue;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-p {
-    font-family: JetBrains Nerds Mono, monospace;
-    font-size: 16px;
-    color: #00ffdd;
-    font-weight: bold;
+p{
+        margin-left: 5%;
+        margin-right: 5%;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #f9f9f9;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Mezery mezi odkazy */
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Efekt při najetí myší */
+nav a:hover {
+    color: #007bff;
+}
+
+.logo {
+    font-size: 24px;         /* Velikost písmene */
+    font-weight: 900;        /* Velmi tučné */
+    color: #ffffff;          /* Bílá barva textu */
+    background-color: #6f00ff;  /* Tmavé pozadí */
+    padding: 5px 15px;       /* Aby kolem J bylo trochu místa */
+    border-radius: 5px;      /* Jemně zakulacené rohy – vypadá to moderně */
+    cursor: pointer;         /* Při najetí se změní kurzor na ruku */
+}
+
+section {
+    padding: 80px 5%;
+}
+
+#domu {
+    background-color: #ffffff;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main p {
+    max-width: 700px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+    font-size: 0.9em;
+    color: #666;
 }
