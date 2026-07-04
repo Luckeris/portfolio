@@ -158,9 +158,12 @@ footer { text-align: center; padding: 30px; color: var(--text-muted); border-top
 /* =========================================================
    RESPONZIVITA (Pravidla pro mobily a malé obrazovky)
    ========================================================= */
+/* =========================================================
+   RESPONZIVITA (Pravidla pro mobily a malé obrazovky)
+   ========================================================= */
 @media (max-width: 768px) {
-    /* Uvolnění hlavičky, aby nezabírala půlku malého displeje */
-    header { position: absolute; }
+    /* OPRAVA: Zrušíme překrývání. Hlavička teď přirozeně odtlačí obsah dolů */
+    header { position: relative; }
     
     /* Přestavba navigace pod sebe */
     nav { 
@@ -178,13 +181,13 @@ footer { text-align: center; padding: 30px; color: var(--text-muted); border-top
     }
 
     /* Zmenšení obřích textů */
-    h1 { font-size: 2.2rem; white-space: normal; }
+    h1 { font-size: 2.2rem; white-space: normal; margin-top: 20px; }
     h2 { font-size: 2rem; margin-bottom: 25px; }
     .subtitle { font-size: 1.1rem; }
 
-    /* Zmenšení hluchých míst */
-    .section { padding: 120px 0 60px 0; min-height: auto; }
-    .karta { padding: 20px; }
+    /* Zmenšení hluchých míst a paddingů (protože hlavička už nevisí nad textem) */
+    .section { padding: 50px 0; min-height: auto; }
+    .karta { padding: 25px 20px; }
 
     /* Tlačítka přes celou šířku (Thumb-friendly) */
     .hero-buttons { flex-direction: column; width: 100%; }
