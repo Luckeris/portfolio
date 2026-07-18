@@ -1,175 +1,175 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jakub Hluško | Portfolio</title>
+    <title>Jakub Hluško — Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Devicon pro loga technologií -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
-<body class="dark-mode">
+<body id="top">
+    <!-- Terminálová mřížka -->
+    <div class="terminal-grid" aria-hidden="true"></div>
 
-    <!-- Animované pozadí -->
-    <div class="bg-animation">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <!-- Navigace -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#domu" class="logo">JH</a>
-                <ul class="nav-links">
-                    <li><a href="#domu">Domů</a></li>
-                    <li><a href="#o-mne">O mně</a></li>
-                    <li><a href="#projekty">Projekty</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                    <li><button id="theme-toggle">☀️ / 🌙</button></li>
-                </ul>
-            </nav>
-        </div>
+    <!-- HACKER WATERMARK (Doxbin vibe) -->
+    <pre class="bg-watermark text-accent" aria-hidden="true">
+          _,.-------.,_
+      ,;~'             '~;,
+    ,;                     ;,
+   ;                         ;
+  ,'                         ',
+ ,;                           ;,
+ ; ;      .           .      ; ;
+ | ;   ______       ______   ; |
+ |  `/~"     ~" . "~     "~\'  |
+ |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
+  |   |        }:{        |   |
+  |   l       / | \       !   |
+  .~  (__,.--" .^. "--.,__)  ~.
+  |     ---;' / | \ `;---     |
+   \__.       \/^\/       .__/
+    V| \                 / |V
+     | |T~\___!___!___/~T| |
+     | |`IIII_I_I_I_IIII`| |
+     |  \,III I I I III,/  |
+      \   `~~~~~~~~~~'    /
+        \   .       .   /
+          \.    ^    ./
+            ^~~~^~~~^
+    </pre>
+    
+    <header class="site-header">
+        <nav class="container nav-bar">
+            <a href="#boot" class="nav-logo text-accent glitch-hover" data-text="~/hlusko">~/hlusko</a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">./about</a>
+                    <a href="#projects" class="nav-link">./projects</a>
+                    <a href="#contact" class="nav-link">./contact</a>
+                </div>
+                <!-- Přepínač témat -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Přepnout světlý/tmavý režim">
+                    <span id="theme-icon">☼</span>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <main class="container">
-        
-        <!-- 1. KARTA: DOMŮ -->
-        <section id="domu" class="section">
-            <div class="hero-content hidden">
-                <h1 class="typing-effect">Ahoj, já jsem <span class="highlight">Jakub</span></h1>
-                <p class="subtitle">Budoucí Bc. | Maturant z IT Elektrotechniky | Nadšenec do AI & IoT</p>
-                <p>Fascinují mě technologie – od umělé inteligence přes vývoj softwaru až po elektroniku. Rád tyto světy propojuji, neustále se vzdělávám a využívám AI k vývoji inovativních aplikací a objevování nových příležitostí. Aktuálně rozšiřuji své obzory na vysoké škole a ponořuji se do hloubky IoT systémů, zejména technologií LoRa.</p>
-                <div class="hero-buttons">
-                    <a href="#projekty" class="btn btn-primary">Moje práce</a>
-                    <a href="#kontakt" class="btn btn-outline">Kontaktovat</a>
+    <main class="snap-container">
+        <!-- Slide 1: BOOT SCREEN -->
+        <section id="boot" class="snap-section">
+            <div class="section-content text-center">
+                
+                <!-- Interaktivní velký ASCII Glitch -->
+                <div class="ascii-hero-container reveal-init">
+                    <!-- Základní vrstva -->
+<pre class="ascii-art text-accent base-layer">
+   ____ ___  __ __ __  __ ___ 
+  |__  /   |/ //_// / / / __ )
+   /_ &lt;/ /| | ,&lt;  / / / / __  |
+ ___/ / ___ |/| |/ /_/ / /_/ /
+/____/_/  |_/_/ |_\____/_____/</pre>
+                    <!-- Glitch vrstva 1 (Červená) -->
+<pre class="ascii-art text-accent glitch-layer layer-1" aria-hidden="true">
+   ____ ___  __ __ __  __ ___ 
+  |__  /   |/ //_// / / / __ )
+   /_ &lt;/ /| | ,&lt;  / / / / __  |
+ ___/ / ___ |/| |/ /_/ / /_/ /
+/____/_/  |_/_/ |_\____/_____/</pre>
+                    <!-- Glitch vrstva 2 (Modrá) -->
+<pre class="ascii-art text-accent glitch-layer layer-2" aria-hidden="true">
+   ____ ___  __ __ __  __ ___ 
+  |__  /   |/ //_// / / / __ )
+   /_ &lt;/ /| | ,&lt;  / / / / __  |
+ ___/ / ___ |/| |/ /_/ / /_/ /
+/____/_/  |_/_/ |_\____/_____/</pre>
+                </div>
+                
+                <div class="boot-subtitle reveal-init">
+                    STUDENT DEVELOPER <span class="text-accent">•</span> PYTHON, C#, GO
+                </div>
+
+                <div class="scroll-prompt reveal-init mt-4">
+                    <span class="text-accent">></span> System standby. <span class="blink">_</span>
+                    <div class="mouse-icon mt-4"></div>
+                    <div class="text-muted text-sm mt-2">Scroll to initialize</div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. KARTA: O MNĚ -->
-        <section id="o-mne" class="section">
-            <h2 class="hidden">O mně</h2>
-            <div class="grid">
-                
-                <div class="karta hidden">
-                    <h3>🎓 Vzdělání</h3>
-                    <p><strong>Bakalářské studium:</strong> Průmyslový management</p>
-                    <p><strong>Střední škola:</strong> IT Elektrotechnika (Maturita)</p>
-                </div>
-                
-                <div class="karta hidden">
-                    <h3>💻 Software, AI & Data</h3>
-                    <p>Vývoj aplikací, skriptování a práce s daty za podpory moderních AI nástrojů.</p>
-                    <div class="tech-stack" style="flex-wrap: wrap;">
-                        <i class="devicon-python-plain colored" title="Python"></i>
-                        <i class="devicon-c-plain colored" title="C"></i>
-                        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                        <i class="devicon-html5-plain colored" title="HTML5"></i>
-                        <i class="devicon-css3-plain colored" title="CSS3"></i>
-                        <i class="devicon-git-plain colored" title="Git"></i>
-                        <i class="devicon-opencv-plain colored" title="OpenCV"></i>
-                        <i class="devicon-numpy-original colored" title="NumPy"></i>
+        <!-- Slide 2: HERO TERMINAL -->
+        <section id="hero" class="snap-section">
+            <div class="section-content">
+                <div class="terminal-window reveal-init">
+                    <div class="terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">bash — portfolio.sh</span>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">AI Vibecoding</span>
+                    <div class="terminal-body" id="terminal-content">
+                        <!-- Psací efekt a input se generují sem přes JS -->
                     </div>
                 </div>
-
-                <div class="karta hidden">
-                    <h3>⚙️ Hardware & IoT</h3>
-                    <p>Návrh a správa IoT řešení, bezdrátová komunikace a programování mikrokontrolérů.</p>
-                    <div class="tech-tags">
-                        <span class="tag">ESP32</span>
-                        <span class="tag">LoRa / LoRaWAN</span>
-                        <span class="tag">ChirpStack</span>
-                        <span class="tag">ThingsBoard</span>
-                    </div>
-                </div>
-
-                <div class="karta hidden">
-                    <h3>🌍 Jazyky</h3>
-                    <p><strong>Angličtina:</strong> B2 (Pokročilá komunikace i technická dokumentace)</p>
-                    <p><strong>Čeština:</strong> Rodilý mluvčí</p>
-                </div>
-                
             </div>
         </section>
 
-        <!-- 3. KARTA: PROJEKTY -->
-        <section id="projekty" class="section">
-            <h2 class="hidden">Vybrané projekty</h2>
-            <div class="grid projects-grid">
-                
-                <div class="karta hidden projekt-karta">
-                    <h3>Webové Portfolio (Tento web)</h3>
-                    <p>Moderní, plně responzivní portfolio s Glassmorphism designem, dark-modem a plynulými animacemi. Žádné frameworky, čistý kód.</p>
-                    <div class="tech-stack" style="margin-top: 15px;">
-                        <i class="devicon-html5-plain colored" title="HTML5"></i>
-                        <i class="devicon-css3-plain colored" title="CSS3"></i>
-                        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                    </div>
-                    <a href="https://github.com/Luckeris/portfolio" target="_blank" class="text-link">↗ Zdrojový kód</a>
+        <!-- Slide 3: ABOUT -->
+        <section id="about" class="snap-section">
+            <div class="section-content">
+                <h2 class="reveal-init">
+                    <span class="text-accent">$</span> <span class="text-muted">cat</span> about.md
+                </h2>
+                <div class="text-muted">
+                    <p class="reveal-init">Hey, I'm Jakub — welcome to my corner of the internet. I'm a student developer who genuinely enjoys embedded systems, IoT infrastructure, and backend development. I'm finishing secondary school in IT electrical engineering and heading toward a bachelor's degree in Industrial Management.</p>
+                    <p class="reveal-init">I've managed LoRa IoT infrastructure in real production environments — configuring ChirpStack networks and building monitoring dashboards in ThingsBoard. I also work with machine-vision systems on Raspberry Pi, accelerated with Google Coral, and I like connecting AI, software, and electronics into things that actually work.</p>
+                    <p class="reveal-init">When I'm not coding, you'll usually find me tinkering with ESP32 projects, exploring new AI tools, or picking up another programming language. I'm always happy to take on an interesting challenge or a good collaboration.</p>
                 </div>
-
-                <div class="karta hidden projekt-karta">
-                    <h3>Správa LoRa IoT infrastruktury</h3>
-                    <p>Praktická zkušenost z pracovního prostředí zaměřená na nasazování a správu LoRa senzorů. Součástí agendy byla konfigurace sítě v prostředí ChirpStack a tvorba vizualizačních přehledů (dashboardů) pro monitoring dat přes ThingsBoard.</p>
-                    <div class="tech-tags" style="margin-top: 20px;">
-                        <span class="tag">LoRa / LoRaWAN</span>
-                        <span class="tag">ChirpStack</span>
-                        <span class="tag">ThingsBoard</span>
-                    </div>
-                </div>
-
-                <div class="karta hidden projekt-karta">
-                    <h3>RaspiCAM – Průmyslové strojové vidění</h3>
-                    <p>Komplexní systém pro vizuální kontrolu objektů, detekci pohybu a detekci hran. Aplikace běží na Raspberry Pi s akcelerací neuronových sítí přes Google Coral (TensorFlow). Systém fotí automaticky či manuálně, zpracovává data v reálném čase. Backend je postavený na FastAPI, uživatelské rozhraní na Reactu.</p>
-                    <div class="tech-stack" style="flex-wrap: wrap; margin-top: 15px; font-size: 1.8rem;">
-                        <i class="devicon-python-plain colored" title="Python"></i>
-                        <i class="devicon-opencv-plain colored" title="OpenCV"></i>
-                        <i class="devicon-numpy-original colored" title="NumPy"></i>
-                        <i class="devicon-pandas-plain colored" title="Pandas"></i>
-                        <i class="devicon-tensorflow-original colored" title="TensorFlow"></i>
-                        <i class="devicon-react-original colored" title="React"></i>
-                        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                    </div>
-                    <div class="tech-tags" style="margin-top: 10px;">
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Raspberry Pi</span>
-                        <span class="tag">Google Coral</span>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- 4. KARTA: KONTAKT -->
-        <section id="kontakt" class="section">
-            <h2 class="hidden">Pojďme se spojit</h2>
-            <div class="karta hidden kontakt-karta">
-                <p>Hledám příležitosti, kde mohu uplatnit své technické znalosti a nadšení pro inovace. Pokud pro mě máte zajímavou výzvu, určitě se ozvěte!</p>
+        <!-- Slide 4: PROJECTS -->
+        <section id="projects" class="snap-section">
+            <div class="section-content">
+                <h2 class="reveal-init">
+                    <span class="text-accent">$</span> <span class="text-muted">ls</span> -la ./projects
+                </h2>
+                <div id="repos-container" class="grid-container reveal-init">
+                    <span class="text-muted loading-text">Načítám repozitáře z GitHubu <span class="blink">...</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: CONTACT & FOOTER -->
+        <section id="contact" class="snap-section">
+            <div class="section-content">
+                <h2 class="reveal-init">
+                    <span class="text-accent">$</span> <span class="text-muted">./</span> contact.sh
+                </h2>
+                <p class="reveal-init text-muted">I'm looking for opportunities to put my technical skills and enthusiasm for building to good use. If you have an interesting challenge — or just want to say hi — feel free to reach out.</p>
                 
-                <div class="kontakt-links">
-                    <a href="mailto:hluskojakub@outlook.com" class="btn btn-primary">Napsat e-mail</a>
-                    <a href="https://www.linkedin.com/in/jakub-hluško-639202366" target="_blank" class="btn btn-outline" style="border-color: #0077b5; color: #0077b5;">
-                        <i class="devicon-linkedin-plain"></i> LinkedIn
+                <div class="contact-links">
+                    <a href="mailto:hluskojakub@outlook.com" class="hover-lift reveal-init">
+                        <span class="text-accent">→</span> hluskojakub@outlook.com
                     </a>
-                    <a href="https://github.com/Luckeris" target="_blank" class="btn btn-outline">
-                        <i class="devicon-github-original"></i> GitHub
+                    <a href="https://github.com/Luckeris" target="_blank" rel="noopener noreferrer" class="hover-lift reveal-init">
+                        <span class="text-accent">→</span> github.com/Luckeris
                     </a>
+                    <a href="https://www.linkedin.com/in/jakub-hluško-639202366" target="_blank" rel="noopener noreferrer" class="hover-lift reveal-init">
+                        <span class="text-accent">→</span> LinkedIn
+                    </a>
+                    <span class="flex-item text-muted reveal-init">
+                        <span class="text-accent">→</span> Czech Republic
+                    </span>
                 </div>
+                
+                <footer class="border-t flex-between reveal-init" style="margin-top: 3rem;">
+                    <span class="text-muted"><span class="text-accent">$</span> echo "© 2026 Jakub Hluško"</span>
+                    <span class="text-muted opacity-60">built with vanilla code</span>
+                </footer>
             </div>
         </section>
-
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Jakub Hluško</p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
