@@ -229,5 +229,26 @@ async function fetchGitHubRepos() {
         container.innerHTML = '<span class="text-muted">Nepodařilo se načíst repozitáře. Zkontroluj můj GitHub přímo.</span>';
     }
 }
+// --- OPRAVENÉ POČÍTADLO NÁVŠTĚV ---
+async function initVisitorCounter() {
+    const counterEl = document.getElementById('visit-count');
+    if (!counterEl) return;
 
+    try {
+        // Používáme stabilnější službu pro sledování hitů
+        const response = await fetch('https://api.countapi.xyz/hit/luckeris.github.io/portfolio');
+        const data = await response.json();
+        
+        counterEl.innerText = data.value.toLocaleString();
+        counterEl.classList.remove('blink');
+    } catch (error) {
+        // Pokud API selže, zkusíme záložní metodu nebo vypíšeme aspoň nulu
+        counterEl.innerText = '0';
+        counterEl.classList.remove('blink');
+        console.warn("Počítadlo návštěv není dostupné.");
+    }
+}
+
+// Spustíme počítadlo
+initVisitorCounter();
 fetchGitHubRepos();
