@@ -191,42 +191,89 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.snap-section').forEach(sec => observer.observe(sec));
 
+// --- FALLBACK CURATED REPOSITORIES ---
+const FALLBACK_REPOS = [
+    {
+        name: "FormStream",
+        html_url: "https://github.com/Luckeris/formstream",
+        description: "A Web-Developer Micro Service for Frontend Form Testing",
+        language: "Go",
+        stargazers_count: 0
+    },
+    {
+        name: "Star",
+        html_url: "https://github.com/Luckeris/star",
+        description: "A simpler and easier to use git clone. Programmed in Go.",
+        language: "Go",
+        stargazers_count: 1
+    },
+    {
+        name: "wake-on-lan-esp32",
+        html_url: "https://github.com/Luckeris/wake-on-lan-esp32",
+        description: "Code for ESP32 waking up and turning on your PC via hosted web interface and magic packets.",
+        language: "C++",
+        stargazers_count: 0
+    },
+    {
+        name: "br_setup_script",
+        html_url: "https://github.com/Luckeris/br_setup_script",
+        description: "Automated setup and configuration script for Arch-based Linux environments.",
+        language: "Shell",
+        stargazers_count: 0
+    }
+];
+
+// --- REPOSITORY CARDS RENDERER ---
+function renderRepoCards(repos, container) {
+    container.innerHTML = '';
+    repos.forEach((repo, index) => {
+        const card = document.createElement('a');
+        card.href = repo.html_url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+        card.className = 'repo-card';
+        card.style.animationDelay = `${index * 0.15}s`;
+
+        const language = repo.language ? `<span><div class="lang-dot"></div> ${repo.language}</span>` : '';
+        const stars = repo.stargazers_count > 0 ? `<span>★ ${repo.stargazers_count}</span>` : '';
+
+        card.innerHTML = `
+            <div class="repo-name">
+                <span>${repo.name}</span>
+                <span class="text-muted">↗</span>
+            </div>
+            <div class="repo-desc">${repo.description || 'No description provided.'}</div>
+            <div class="repo-stats">${language}${stars}</div>
+        `;
+        container.appendChild(card);
+    });
+}
+
 // --- GITHUB REPOS FETCH ---
 async function fetchGitHubRepos() {
     const container = document.getElementById('repos-container');
     if (!container) return;
 
     try {
-        const response = await fetch('https://api.github.com/users/Luckeris/repos?sort=updated&per_page=6');
-        if (!response.ok) throw new Error('API rate limit or network error');
+        const response = await fetch('https://api.github.com/users/Luckeris/repos?sort=updated&per_page=10');
+        if (!response.ok) throw new Error('API request failed');
         
         const repos = await response.json();
-        container.innerHTML = ''; 
+        if (!Array.isArray(repos) || repos.length === 0) throw new Error('Empty response');
 
-        repos.filter(repo => !repo.fork).slice(0, 4).forEach((repo, index) => {
-            const card = document.createElement('a');
-            card.href = repo.html_url;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-            card.className = 'repo-card';
-            card.style.animationDelay = `${index * 0.15}s`;
+        const filtered = repos.filter(repo =>
+            !repo.fork &&
+            repo.name.toLowerCase() !== 'luckeris' &&
+            repo.name.toLowerCase() !== 'portfolio'
+        );
 
-            const language = repo.language ? `<span><div class="lang-dot"></div> ${repo.language}</span>` : '';
-            const stars = repo.stargazers_count > 0 ? `<span>★ ${repo.stargazers_count}</span>` : '';
-
-            card.innerHTML = `
-                <div class="repo-name">
-                    <span>${repo.name}</span>
-                    <span class="text-muted">↗</span>
-                </div>
-                <div class="repo-desc">${repo.description || 'No description provided.'}</div>
-                <div class="repo-stats">${language}${stars}</div>
-            `;
-            container.appendChild(card);
-        });
-
+        if (filtered.length === 0) {
+            renderRepoCards(FALLBACK_REPOS, container);
+        } else {
+            renderRepoCards(filtered.slice(0, 4), container);
+        }
     } catch (error) {
-        container.innerHTML = '<span class="text-muted">Failed to load repositories. Please check my GitHub directly.</span>';
+        renderRepoCards(FALLBACK_REPOS, container);
     }
 }
 
