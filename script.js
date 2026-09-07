@@ -6,15 +6,15 @@ function setTheme(isLight) {
     if (isLight) {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
-        themeIcon.textContent = '☾'; // Zobrazí měsíc jako možnost přepnout zpět
+        themeIcon.textContent = '☾'; // Display moon icon for light mode
     } else {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'dark');
-        themeIcon.textContent = '☼'; // Zobrazí slunce
+        themeIcon.textContent = '☼'; // Display sun icon for dark mode
     }
 }
 
-// Při načtení zkontrolujeme preferenci
+// Check stored theme preference on load
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
     setTheme(true);
@@ -40,7 +40,7 @@ let lineIdx = 0;
 let charIdx = 0;
 const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Vytváření HTML řádku
+// Create terminal HTML line
 function createLine(lineInfo, textToDisplay, isActive) {
     const div = document.createElement('div');
     div.className = 'term-line';
@@ -59,20 +59,20 @@ function createLine(lineInfo, textToDisplay, isActive) {
     return div;
 }
 
-// Interaktivní vstup (Input pole)
+// Interactive terminal input field
 function appendInteractiveInput() {
     const wrapper = document.createElement('div');
     wrapper.className = 'term-line term-input-wrapper';
     wrapper.innerHTML = `
         <span class="term-prompt">visitor@portfolio:~$</span>
-        <input type="text" id="term-cmd-input" class="term-cmd-input" autocomplete="off" spellcheck="false" placeholder="Zadej příkaz (např. 'projects', 'about', 'contact', 'help')...">
+        <input type="text" id="term-cmd-input" class="term-cmd-input" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. 'projects', 'about', 'contact', 'help')...">
     `;
     terminalContent.appendChild(wrapper);
 
     const inputEl = document.getElementById('term-cmd-input');
     inputEl.focus();
 
-    // Posloucháme Enter
+    // Listen for Enter key
     inputEl.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             const cmd = this.value.trim().toLowerCase();
@@ -81,7 +81,7 @@ function appendInteractiveInput() {
     });
 }
 
-// Zpracování příkazů z terminálu a spuštění scrollování
+// Handle terminal commands and navigation
 function handleCommand(cmd, oldWrapper) {
     oldWrapper.remove();
     const historyLine = createLine({ prompt: 'visitor@portfolio:~$', type: 'cmd' }, cmd, false);
@@ -92,24 +92,24 @@ function handleCommand(cmd, oldWrapper) {
     let targetHash = ''; 
 
     if (cmd === 'help') {
-        responseText = 'Dostupné příkazy: about, projects, contact, clear, theme';
+        responseText = 'Available commands: about, projects, contact, clear, theme, help';
     } else if (['about', 'cd about', './about', 'whoami'].includes(cmd)) {
-        responseText = 'Spouštím ./about.md...';
+        responseText = 'Opening ./about.md...';
         targetHash = '#about';
     } else if (['projects', 'cd projects', 'ls projects'].includes(cmd)) {
-        responseText = 'Otevírám složku ./projects...';
+        responseText = 'Navigating to ./projects...';
         targetHash = '#projects';
     } else if (['contact', 'cd contact', 'mail'].includes(cmd)) {
-        responseText = 'Otevírám ./contact.sh...';
+        responseText = 'Opening ./contact.sh...';
         targetHash = '#contact';
     } else if (['theme', 'light', 'dark'].includes(cmd)) {
         const isLight = document.documentElement.getAttribute('data-theme') !== 'light';
         setTheme(isLight);
-        responseText = `Přepínám systémový režim...`;
+        responseText = 'Toggling system theme...';
     } else if (cmd === 'clear') {
         terminalContent.innerHTML = ''; 
     } else if (cmd !== '') {
-        responseText = `bash: ${cmd}: command not found. Zadej 'help' pro nápovědu.`;
+        responseText = 'bash: ' + cmd + ': command not found. Type \'help\' for available commands.';
     }
 
     if (responseText && cmd !== 'clear') {
@@ -132,7 +132,7 @@ function handleCommand(cmd, oldWrapper) {
     }
 }
 
-// Renderování psací animace
+// Render typing animation
 function renderTerminal() {
     terminalContent.innerHTML = '';
     const isDone = lineIdx >= initialLines.length;
@@ -198,7 +198,7 @@ async function fetchGitHubRepos() {
 
     try {
         const response = await fetch('https://api.github.com/users/Luckeris/repos?sort=updated&per_page=6');
-        if (!response.ok) throw new Error('API limit nebo chyba sítě');
+        if (!response.ok) throw new Error('API rate limit or network error');
         
         const repos = await response.json();
         container.innerHTML = ''; 
@@ -226,7 +226,7 @@ async function fetchGitHubRepos() {
         });
 
     } catch (error) {
-        container.innerHTML = '<span class="text-muted">Nepodařilo se načíst repozitáře. Zkontroluj můj GitHub přímo.</span>';
+        container.innerHTML = '<span class="text-muted">Failed to load repositories. Please check my GitHub directly.</span>';
     }
 }
 
