@@ -70,15 +70,39 @@ function createLine(lineInfo, textToDisplay, isActive) {
 // Interactive terminal input field
 function appendInteractiveInput() {
     const wrapper = document.createElement('div');
-    wrapper.className = 'term-line term-input-wrapper';
-    wrapper.innerHTML = `
+    wrapper.className = 'term-input-container';
+
+    const inputLine = document.createElement('div');
+    inputLine.className = 'term-line term-input-wrapper';
+    inputLine.innerHTML = `
         <span class="term-prompt">visitor@portfolio:~$</span>
         <input type="text" id="term-cmd-input" class="term-cmd-input" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. 'projects', 'about', 'contact', 'help')...">
     `;
+
+    const chips = document.createElement('div');
+    chips.className = 'term-chips';
+    const commands = ['about', 'projects', 'contact', 'theme', 'help'];
+    commands.forEach(cmd => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'term-chip';
+        chip.textContent = cmd;
+        chip.setAttribute('aria-label', `Run command ${cmd}`);
+        chip.addEventListener('click', () => {
+            handleCommand(cmd, wrapper);
+        });
+        chips.appendChild(chip);
+    });
+
+    wrapper.appendChild(inputLine);
+    wrapper.appendChild(chips);
     terminalContent.appendChild(wrapper);
 
     const inputEl = document.getElementById('term-cmd-input');
-    inputEl.focus();
+    // Only auto-focus on desktop to avoid jarring mobile virtual keyboard popups
+    if (!('ontouchstart' in window) && window.innerWidth > 640) {
+        inputEl.focus();
+    }
 
     // Listen for Enter key
     inputEl.addEventListener('keydown', function(e) {
