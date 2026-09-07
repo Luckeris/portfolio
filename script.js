@@ -44,18 +44,26 @@ const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').ma
 function createLine(lineInfo, textToDisplay, isActive) {
     const div = document.createElement('div');
     div.className = 'term-line';
-    let html = '';
     
-    if (lineInfo.prompt) html += `<span class="term-prompt">${lineInfo.prompt}</span>`;
+    if (lineInfo.prompt) {
+        const promptSpan = document.createElement('span');
+        promptSpan.className = 'term-prompt';
+        promptSpan.textContent = lineInfo.prompt;
+        div.appendChild(promptSpan);
+    }
     
-    let textClass = 'term-text';
-    if (lineInfo.type === 'name') textClass = 'term-name';
-    if (lineInfo.type === 'cmd') textClass = 'term-cmd';
+    const textSpan = document.createElement('span');
+    textSpan.className = lineInfo.type === 'name' ? 'term-name' : (lineInfo.type === 'cmd' ? 'term-cmd' : 'term-text');
+    textSpan.textContent = textToDisplay;
+    div.appendChild(textSpan);
     
-    html += `<span class="${textClass}">${textToDisplay}</span>`;
-    if (isActive) html += `<span class="caret" aria-hidden="true"></span>`;
+    if (isActive) {
+        const caret = document.createElement('span');
+        caret.className = 'caret';
+        caret.setAttribute('aria-hidden', 'true');
+        div.appendChild(caret);
+    }
     
-    div.innerHTML = html;
     return div;
 }
 
@@ -102,7 +110,13 @@ function handleCommand(cmd, oldWrapper) {
     } else if (['contact', 'cd contact', 'mail'].includes(cmd)) {
         responseText = 'Opening ./contact.sh...';
         targetHash = '#contact';
-    } else if (['theme', 'light', 'dark'].includes(cmd)) {
+    } else if (cmd === 'light') {
+        setTheme(true);
+        responseText = 'System theme set to light mode.';
+    } else if (cmd === 'dark') {
+        setTheme(false);
+        responseText = 'System theme set to dark mode.';
+    } else if (cmd === 'theme') {
         const isLight = document.documentElement.getAttribute('data-theme') !== 'light';
         setTheme(isLight);
         responseText = 'Toggling system theme...';
