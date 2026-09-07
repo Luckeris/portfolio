@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jakub Hluško — Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
@@ -29,6 +32,7 @@
     </header>
 
     <main class="snap-container">
+        <h1 class="sr-only">Jakub Hluško — Developer Portfolio</h1>
         <!-- Slide 1: BOOT SCREEN -->
         <section id="boot" class="snap-section">
             <div class="section-content text-center">
@@ -36,7 +40,7 @@
                 <!-- Interactive ASCII glitch banner -->
                 <div class="ascii-hero-container reveal-init">
                     <!-- Base layer -->
-<pre class="ascii-art text-accent base-layer">
+<pre class="ascii-art text-accent base-layer" aria-hidden="true">
    ____ ___  __ __ __  __ ___ 
   |__  /   |/ //_// / / / __ )
    /_ &lt;/ /| | ,&lt;  / / / / __  |
@@ -94,10 +98,10 @@
                     <span class="text-accent">$</span> <span class="text-muted">cat</span> about.md
                 </h2>
                 <div class="text-muted">
-                    <p class="reveal-init">Hey, I'm Jacob — welcome to my corner of the internet. I'm a student developer who genuinely enjoys embedded systems, IoT infrastructure, and backend development. I have graduated from IT electrical engineering and heading toward a bachelor's degree in Industrial Management.</p>
-                    <p class="reveal-init">I've managed LoRa IoT infrastructure in real production environments — configuring ChirpStack networks and building monitoring dashboards in ThingsBoard. I also work with machine-vision systems on Raspberry Pi, accelerated with Google Coral, and I like connecting AI, software, and electronics into things that actually work.</p>
+                    <p class="reveal-init">Hey, I'm Jakub (Jacob) — welcome to my corner of the internet. I'm a student developer who genuinely enjoys embedded systems, IoT infrastructure, and backend development. Having graduated in IT electrical engineering, I am heading toward a bachelor's degree in Industrial Management.</p>
+                    <p class="reveal-init">I've managed LoRa IoT infrastructure in real production environments — configuring ChirpStack networks and building monitoring dashboards in ThingsBoard. I also work with machine-vision systems on Raspberry Pi, accelerated with Google Coral, and ESP32 microcontrollers, connecting electronics, firmware, and networks into things that actually work.</p>
+                    <p class="reveal-init">Recent software projects include <strong>FormStream</strong> (a microservice for frontend form testing in Go) alongside <strong>Star</strong> (a simpler and easier to use git clone, programmed in Go), wake-on-lan-esp32, and automated Linux setup tooling.</p>
                     <p class="reveal-init">When I'm not coding, you'll usually find me playing games, exploring new AI tools, or picking up another programming language. I'm always happy to take on an interesting challenge or a good collaboration.</p>
-                    <p class="reveal-init">My current project is <strong>Star</strong>, which is a simpler and easier to use version of git.</p>
                 </div>
             </div>
         </section>

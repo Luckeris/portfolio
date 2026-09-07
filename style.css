@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-
 :root {
   /* Default Dark Mode */
   --background: oklch(0.16 0.008 160);
@@ -171,6 +169,19 @@ p {
 .text-sm { font-size: 0.875rem; }
 .opacity-60 { opacity: 0.6; }
 
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* === Interactive ASCII Art & Boot Screen === */
 .ascii-hero-container {
   position: relative;
@@ -312,7 +323,7 @@ p {
 .hover-lift:hover { transform: translateX(5px); color: var(--foreground); }
 
 /* === Projects === */
-.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .repo-card {
   border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem;
   background-color: color-mix(in oklch, var(--card) 30%, transparent); text-decoration: none; display: flex; flex-direction: column;
@@ -349,5 +360,11 @@ a { color: var(--muted-foreground); text-decoration: none; }
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .nav-right { gap: 0; }
-  .snap-section { min-height: 100dvh; height: auto; }
+  .snap-section {
+    min-height: 100dvh;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+  }
 }
