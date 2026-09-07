@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  /* Výchozí TMAVÝ režim */
+  /* Default Dark Mode */
   --background: oklch(0.16 0.008 160);
   --foreground: oklch(0.92 0.02 150);
   --card: oklch(0.2 0.008 162);
@@ -11,17 +11,17 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* === SVĚTLÝ REŽIM (Light Mode) === */
+/* === Light Mode === */
 :root[data-theme="light"] {
   --background: oklch(0.98 0.01 150);
   --foreground: oklch(0.25 0.02 150);
   --card: oklch(0.95 0.02 150);
   --muted-foreground: oklch(0.45 0.02 155);
   --accent: oklch(0.55 0.15 152); 
-  --border: oklch(0.80 0.02 150); /* Ztmaveno pro lepší mřížku */
+  --border: oklch(0.80 0.02 150); /* Darkened for grid visibility */
 }
 
-/* === MAGIE PRO FULLPAGE SCROLL === */
+/* === Fullpage Scroll === */
 html { 
   scroll-snap-type: y mandatory; 
   scroll-behavior: smooth;
@@ -39,10 +39,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Skrytí posuvníku pro čistší look */
+/* Hide scrollbar for cleaner look */
 ::-webkit-scrollbar { width: 0px; background: transparent; }
 
-/* === HACKER WATERMARK V POZADÍ === */
+/* === Background Watermark === */
 .bg-watermark {
   position: fixed;
   top: 50%; left: 50%;
@@ -53,24 +53,11 @@ body {
   opacity: 0.12; 
   pointer-events: none;
   font-weight: 700;
-  color: var(--accent); /* Výchozí barva (zelená) */
+  color: var(--accent);
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-/* Tmavší barva pro světlý režim, aby lebka vynikla */
-[data-theme="light"] .bg-watermark {
-  color: oklch(0.3 0.02 150); /* Výrazná tmavá šedo-zelená */
-  opacity: 0.15;              /* Trochu vyšší opacita pro lepší čitelnost */
-}
-
-/* Tweak pro vodoznak ve světlém režimu (čistý, bez záře) */
-[data-theme="light"] .bg-watermark {
-  color: var(--foreground);
-  text-shadow: none;
-  opacity: 0.25;
-}
-
-/* Terminálová mřížka */
+/* Terminal grid */
 .terminal-grid {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   z-index: -3; opacity: 0.3; pointer-events: none;
@@ -80,12 +67,12 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Výraznější mřížka pro světlý režim */
+/* Stronger grid for light mode */
 [data-theme="light"] .terminal-grid {
   opacity: 0.6;
 }
 
-/* === SLIDE STRUKTURA === */
+/* === Slide Structure === */
 .snap-section {
   min-height: 100dvh;
   width: 100%;
@@ -104,7 +91,7 @@ body {
   max-width: 48rem;
 }
 
-/* === GLITCH LOGO NAVIGACE === */
+/* === Navigation Glitch Logo === */
 .nav-logo { font-weight: 700; font-size: 1.1rem; text-decoration: none; position: relative; }
 .glitch-hover:hover::before, .glitch-hover:hover::after {
   content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -115,7 +102,7 @@ body {
 @keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); } 50% { clip-path: inset(60% 0 10% 0); } 100% { clip-path: inset(10% 0 50% 0); } }
 @keyframes glitch-anim-2 { 0% { clip-path: inset(80% 0 5% 0); } 50% { clip-path: inset(10% 0 60% 0); } 100% { clip-path: inset(40% 0 20% 0); } }
 
-/* Navigace a přepínač režimu */
+/* Navigation and theme toggle */
 .site-header {
   position: fixed; top: 0; width: 100%; z-index: 50;
   background-color: color-mix(in oklch, var(--background) 75%, transparent);
@@ -147,12 +134,11 @@ body {
   transform: translateY(-2px);
 }
 
-/* Typografie */
-/* === TEXTOVÉ VRSTVY S CHYTŘEJŠÍM POZADÍM === */
-/* === TEXTOVÉ VRSTVY S BLUREM (Glassmorphism) === */
+/* Typography */
+/* === Glassmorphic Text Layers === */
 h2 { 
   font-size: 1.125rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; gap: 0.5rem; 
-  /* Snížena opacita pro lepší průhlednost a blur */
+  /* Reduced opacity for enhanced blur */
   background: color-mix(in oklch, var(--card) 40%, transparent);
   backdrop-filter: blur(8px);
   padding: 0.5rem 1rem;
@@ -165,14 +151,14 @@ p {
   margin-top: 0; margin-bottom: 1.5rem; font-size: 0.9375rem; line-height: 1.6; 
   padding: 1.2rem;
   border-radius: 12px;
-  /* Stejný glass-effect jako u projektů */
+  /* Glass effect matching project cards */
   background: color-mix(in oklch, var(--card) 40%, transparent);
   backdrop-filter: blur(8px);
   border: 1px solid color-mix(in oklch, var(--border) 50%, transparent);
   transition: background 0.3s ease;
 }
 
-/* Jemné posílení pro světlý režim, aby text stále dobře četl */
+/* Subtle contrast boost for light mode readability */
 [data-theme="light"] p, [data-theme="light"] h2 {
   background: color-mix(in oklch, var(--card) 60%, transparent);
   border-color: color-mix(in oklch, var(--border) 60%, transparent);
@@ -185,7 +171,7 @@ p {
 .text-sm { font-size: 0.875rem; }
 .opacity-60 { opacity: 0.6; }
 
-/* === INTERAKTIVNÍ VELKÝ ASCII ART & BOOT SCREEN === */
+/* === Interactive ASCII Art & Boot Screen === */
 .ascii-hero-container {
   position: relative;
   display: block; 
@@ -267,7 +253,7 @@ p {
 }
 @keyframes scrollWheel { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 12px); opacity: 0; } }
 
-/* === TERMINÁLOVÉ OKNO === */
+/* === Terminal Window === */
 .terminal-window {
   border: 1px solid var(--border); border-radius: 0.5rem;
   background-color: color-mix(in oklch, var(--card) 60%, transparent);
@@ -276,7 +262,7 @@ p {
 }
 
 [data-theme="light"] .terminal-window {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); /* Jemnější stín na bílé */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); /* Subtle shadow in light mode */
 }
 
 .terminal-header {
@@ -319,13 +305,13 @@ p {
   animation: caret-blink 1.05s steps(1) infinite;
 }
 
-/* === ANIMACE === */
+/* === Animations === */
 .reveal-init { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal-in { opacity: 1; transform: translateY(0); }
 .hover-lift { transition: transform 0.2s ease, color 0.2s ease; display: inline-flex; width: fit-content; }
 .hover-lift:hover { transform: translateX(5px); color: var(--foreground); }
 
-/* === PROJEKTY === */
+/* === Projects === */
 .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 .repo-card {
   border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem;
@@ -352,14 +338,14 @@ p {
 @keyframes pulseBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 .blink { animation: pulseBlink 1.2s infinite; }
 
-/* === PATIČKA A KONTAKTY === */
+/* === Footer & Contacts === */
 a { color: var(--muted-foreground); text-decoration: none; }
 .contact-links { display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; }
 .flex-item { display: flex; gap: 0.75rem; align-items: center; }
 .border-t { border-top: 1px solid var(--border); }
 .flex-between { display: flex; justify-content: space-between; flex-wrap: wrap; padding: 2rem 0; font-size: 0.75rem; gap: 1rem; }
 
-/* === MOBILY === */
+/* === Mobile Responsiveness === */
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .nav-right { gap: 0; }
